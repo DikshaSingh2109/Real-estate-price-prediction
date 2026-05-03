@@ -114,7 +114,7 @@ df = pd.DataFrame({
     'Sale_Price':       price
 })
 
-df.to_csv('/home/claude/projects/real_estate/housing_data.csv', index=False)
+df.to_csv('data/housing_data.csv', index=False)
 print(f"Dataset: {df.shape[0]} rows × {df.shape[1]} columns")
 print(f"Price range: ${df['Sale_Price'].min():,} — ${df['Sale_Price'].max():,}")
 print(f"Mean price: ${df['Sale_Price'].mean():,.0f}")
@@ -273,8 +273,7 @@ sns.heatmap(corr_matrix, annot=True, fmt='.2f', cmap='coolwarm', center=0,
 ax5.set_title('Feature Correlation Heatmap', fontweight='bold')
 ax5.tick_params(axis='x', rotation=45)
 
-plt.savefig('/home/claude/projects/real_estate/figure1_eda_dashboard.png',
-            dpi=150, bbox_inches='tight')
+plt.savefig('outputs/figure1_eda_dashboard.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("\nFigure 1 (EDA) saved.")
 
@@ -370,8 +369,7 @@ ax5.set_yticklabels([feature_labels.get(f, f) for f in feat_imp.index], fontsize
 for i, (val, label) in enumerate(zip(feat_imp.values, feat_imp.index)):
     ax5.text(val + 0.001, i, f'{val:.3f}', va='center', fontsize=8)
 
-plt.savefig('/home/claude/projects/real_estate/figure2_model_performance.png',
-            dpi=150, bbox_inches='tight')
+plt.savefig('outputs/figure2_model_performance.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("Figure 2 (Model Performance) saved.")
 
@@ -405,8 +403,7 @@ ax2.set_xlabel('Overall Quality (1–10)'); ax2.set_ylabel('Median Sale Price ($
 ax2.set_xticks(range(1, 11))
 
 plt.tight_layout()
-plt.savefig('/home/claude/projects/real_estate/figure3_business_insights.png',
-            dpi=150, bbox_inches='tight')
+plt.savefig('outputs/figure3_business_insights.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("Figure 3 (Business Insights) saved.")
 
@@ -434,7 +431,7 @@ for nb, price_v in top_neigh.items():
 print(f"\n5. Each quality point increase → approx. "
       f"${df.groupby('Overall_Qual')['Sale_Price'].median().diff().mean():,.0f} price increase")
 
-print("\n✅ All outputs saved to: /home/claude/projects/real_estate/")
+print("All outputs saved to: ./outputs/")
 print("   • housing_data.csv")
 print("   • figure1_eda_dashboard.png")
 print("   • figure2_model_performance.png")
